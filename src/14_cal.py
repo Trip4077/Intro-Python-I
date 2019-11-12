@@ -22,3 +22,46 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+# Ensures arguments are formatted correctly based on string length
+def argCheck(arg1, arg2):
+
+  if( len( arg1 ) > 2 or len( arg2 ) > 4):
+    return False
+
+  else:
+    return True
+
+# Generates a calendar based on number of inputs
+def generate_calendar( input ):
+  if input == 3:
+    # Check Format
+    if not argCheck( sys.argv[1], sys.argv[2] ):
+      return "Please enter format MM YYYY"
+
+    # Full User Input
+    monthly = calendar.month( int( sys.argv[2] ), int( sys.argv[1] ), 2, 1 )
+    return monthly
+
+  elif input == 2 :
+    #Check Format
+    if not argCheck( sys.argv[1], "2019" ):
+      return "Please enter format MM YYYY"
+
+    # Default To This year
+    year = datetime.today().year
+    monthly = calendar.month( year, int( sys.argv[1] ), 2, 1 )
+    return monthly
+
+  else:
+    # Default To Today
+    year = datetime.today().year
+    month = datetime.today().month
+
+    monthly = calendar.month( year, month, 2, 1 )
+    return monthly
+
+# Get arguments passed
+argLength = len( sys.argv )
+
+print( generate_calendar( argLength ) )
