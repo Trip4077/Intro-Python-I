@@ -57,3 +57,28 @@ if len( sys.argv ) > 5:
         
         new_student = Student( sys.argv[2], sys.argv[3], float( sys.argv[4] ), sys.argv[5] )
         print( new_student )
+
+# Convert Celsius to F
+
+def convert_temp( temp, unit ):
+
+    if unit == "C":
+        return ( temp * ( 9/5 ) ) + 32
+
+    else:
+        return ( temp - 32 ) * 5/9
+
+
+print( "5 degrees C is %f degrees F" % convert_temp( 5, "C" ) )
+print( "5 degrees F is %f degrees C" % convert_temp( 5, "F" ) )
+
+# Pig Latin Translator
+
+def pig_latin( word ):
+
+    first_char = word[0]
+    rest_of_word = word.replace( first_char, '', 1 )
+
+    return "%s-%say" % ( rest_of_word, first_char )
+
+print( pig_latin( input( "\nEnter a word to convert to pig latin: " ) ) )
